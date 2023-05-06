@@ -35,4 +35,5 @@ Route::get('/products', [ProductController::class,'getAllProducts']);
 Route::controller(CodeController::class)->group(function(){
     Route::get('/getAllCodes/{id}', 'getAllCodes');
     Route::post('/generateCode', 'generateCode');
+    Route::put('/changeStateCode/{code_id}/{user_id}', 'changeStateCode');
 });
