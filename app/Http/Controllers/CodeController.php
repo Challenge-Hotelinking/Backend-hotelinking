@@ -29,7 +29,7 @@ class CodeController extends Controller
         ]);
 
         return response()->json([
-            "message" => 'codigo generado exitosamente'
+            "message" => 'Codigo generado exitosamente'
         ]);
     }
 
