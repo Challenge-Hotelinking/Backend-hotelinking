@@ -21,8 +21,7 @@ class UserController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Modelo creado exitosamente',
-            'data' => $user
+            'message' => 'Usuario creado exitosamente',
         ]);
     }
 
@@ -33,6 +32,7 @@ class UserController extends Controller
         $user = User::where('email', $email)->first();
         if ($user && Hash::check($password, $user->password)) {
             return response()->json([
+                'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email
             ], 200);
