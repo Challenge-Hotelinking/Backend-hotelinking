@@ -22,15 +22,22 @@ class CodeController extends Controller
         $code = explode("-", $string)[4];
         $discount_code = substr($code, 0, 6);
 
-        Code::create([
+        $generatedCode = Code::create([
             'code' => $discount_code,
             'user_id' => $userId,
             'product_id' => $productId
         ]);
 
-        return response()->json([
-            "message" => 'Codigo generado exitosamente'
-        ]);
+        if ($generatedCode) {
+
+            return response()->json([
+                "message" => 'Codigo generado exitosamente'
+            ], 200);
+        } else {
+            return response()->json([
+                "message" => 'Se produjo un error inesperado al generar código'
+            ], 404);
+        }
     }
     public function getAllCodes(string $id)
     {
@@ -42,7 +49,15 @@ class CodeController extends Controller
             })
             ->get();
 
-        return $discountCodes;
+        if($discountCodes)    {
+            return response()->json([
+                "discountCodes" => $discountCodes
+            ], 200);
+        }else {
+            return response()->json([
+                "message" => 'Se produjo un error al obtener los códigos'
+            ], 404);
+        }
     }
 
     public function changeStateCode(string $code_id, string $user_id)
@@ -54,6 +69,14 @@ class CodeController extends Controller
         $code->redeem = true;
         $code->save();
 
-        return $code;
+        if($code)    {
+            return response()->json([
+                "message" => "Codigo canjeado con éxito!!"
+            ], 200);
+        }else {
+            return response()->json([
+                "message" => 'Se produjo un error al canjear el código'
+            ], 404);
+        }
     }
 }
