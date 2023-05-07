@@ -10,9 +10,7 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
+        ['name' => $name, 'email' => $email, 'password' => $password] =  $request;
 
         $user = User::create([
             'name' => $name,
@@ -22,7 +20,7 @@ class UserController extends Controller
 
         return response()->json([
             'message' => 'Usuario creado exitosamente',
-        ]);
+        ], 200);
     }
 
     public function login(Request $request)

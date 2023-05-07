@@ -32,16 +32,6 @@ class CodeController extends Controller
             "message" => 'Codigo generado exitosamente'
         ]);
     }
-
-    // public function getAllCodes(string $id)
-    // {
-    //     $discountCodes = Product::with('code')
-    //         ->whereHas('code', function ($query) use ($id) {
-    //             $query->where('user_id', $id);
-    //         })
-    //         ->get();
-    //     return $discountCodes;
-    // }
     public function getAllCodes(string $id)
     {
         $discountCodes = Product::with(['code' => function ($query) use ($id) {
