@@ -18,9 +18,15 @@ class UserController extends Controller
             'password' => Hash::make($password),
         ]);
 
-        return response()->json([
-            'message' => 'Usuario creado exitosamente',
-        ], 200);
+        if ($user) {
+            return response()->json([
+                'message' => 'Usuario creado exitosamente',
+            ], 200);
+        }else{
+            return response()->json([
+                'message' => 'Error, el usuario no se ha creado exitosamente',
+            ], 500);
+        }
     }
 
     public function login(Request $request)
