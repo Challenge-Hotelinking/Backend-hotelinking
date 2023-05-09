@@ -4,12 +4,18 @@
 ```
 git clone https://github.com/Challenge-Hotelinking/Backend-hotelinking.git
 ```
-2. Seed los productos dentro de la DB
+2. Active las migraciones
+
+```
+php artisan migrate
+
+```
+3. Seed los productos dentro de la DB
 
 ```
 php artisan db:seed --class=ProductSeeder
 ```
-3. Inicie el servidor.
+4. Inicie el servidor.
 
 ```
 php artisan serve
