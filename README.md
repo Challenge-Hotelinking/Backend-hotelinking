@@ -8,7 +8,6 @@ git clone https://github.com/Challenge-Hotelinking/Backend-hotelinking.git
 
 ```
 php artisan migrate
-
 ```
 3. Seed los productos dentro de la DB
 
